@@ -358,3 +358,22 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.social {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.social > .icon > img {
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+  margin-bottom: 4px;
+
+  background-size: cover;
+}
