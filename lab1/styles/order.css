@@ -25,3 +25,64 @@
   background-position: center;
   background-size: cover;
 }
+
+/* LAB ZADATAK */
+.newsletter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.newsletter > img {
+  height: 80px;
+}
+
+.newsletter > .newsletter-body {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  margin-left: 16px;
+}
+
+.newsletter > .newsletter-body > p {
+  margin: 0;
+  margin-bottom: 12px;
+
+  color: var(--main-hard-color);
+  font-weight: bold;
+}
+
+.newsletter > .newsletter-body > .input-field {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.newsletter > .newsletter-body > .input-field > input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border-color: var(--main-color);
+}
+
+.newsletter > .newsletter-body > .input-field > input::placeholder {
+  color: #666;
+}
+
+.newsletter > .newsletter-body > .input-field > input:focus {
+  border-color: #000;
+  background-color: var(--main-color);
+}
+
+.newsletter > .newsletter-body > .input-field > button {
+  padding: 8px;
+  border-radius: 4px;
+  margin-left: 4px;
+
+  color: #fff;
+  background-color: rgb(128, 13, 128);
+}
