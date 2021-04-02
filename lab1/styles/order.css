@@ -1,0 +1,27 @@
+.full-container {
+  width: 100%;
+}
+
+.container-grid-col-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.image-container > h2 {
+  font-family: "Dancing Script";
+  color: var(--main-hard-color);
+}
+
+.image-container > .image {
+  height: 200px;
+  width: 200px;
+
+  background-position: center;
+  background-size: cover;
+}
