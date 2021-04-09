@@ -1,0 +1,13 @@
+{
+  "name": "lab2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "live-server"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.1",
+    "typescript": "^4.2.4"
+  }
+}
