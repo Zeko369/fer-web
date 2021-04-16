@@ -19,7 +19,7 @@
             <img class="scaled-image scaled-image-fixed" src="images/logo.svg" alt="Company logo" />
           </a>
           <a href="#" class="link menu-item">Contact us</a>
-          <a href="#" class="link menu-item cart-menu">
+          <a href="cart.html" class="link menu-item cart-menu">
             <img src="images/cart-icon.svg" alt="Cart icon" />
             <div class="cart-menu-status">
               <div id="cart-items">0</div>
@@ -65,12 +65,14 @@
         <div class="cart-btn" onclick=""></div>
       </div>
     </template>
+
+    <script src="scripts/main.js"></script>
     <script lang="typescript">
       const getData = async () => {
         const response = await fetch("https://web1lab2.azurewebsites.net/categories");
         const data = await response.json();
 
-        addCategories(data);
+        await addCategories(data);
       };
 
       const addCategories = async (categories) => {
@@ -111,7 +113,5 @@
 
       getData();
     </script>
-
-    <script src="scripts/main.js"></script>
   </body>
 </html>
