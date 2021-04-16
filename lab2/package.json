@@ -2,6 +2,7 @@
   "name": "lab2",
   "version": "1.0.0",
   "main": "index.js",
+  "author": "Fran Zekan <zekan.fran369@gmail.com>",
   "license": "MIT",
   "scripts": {
     "dev": "live-server"
