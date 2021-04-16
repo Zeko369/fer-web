@@ -82,12 +82,8 @@
           const category = categories[index];
           const URL = `https://web1lab2.azurewebsites.net/products?categoryId=${category.id}`;
           const res = await fetch(URL);
-          /** @type {{
-            "id": number,
-            "name": string,
-            "price": number,
-            "categoryId": number,
-            "imageUrl": string}[]} */
+
+          /** @type {{ "id": number, "name": string, "price": number, "categoryId": number, "imageUrl": string}[]} */
           const data = await res.json();
 
           if (data.length > 0) {

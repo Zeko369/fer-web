@@ -1222,3 +1222,8 @@ websocket-extensions@>=0.1.1:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.4.tgz#7f8473bc839dfd87608adb95d7eb075211578a42"
   integrity sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==
+
+zeko369-tsconfig@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/zeko369-tsconfig/-/zeko369-tsconfig-1.0.0.tgz#ab6fff17b4b9cec7cd7a088e956ba35d1388e00b"
+  integrity sha512-sMsFWsgCbcvFXddpLYo77IXwy1tCZsvfCk/oYe0SR7WUb3wWKJx7s3xphVcRsVJedYUwWIOe73zg7+NDa+2aPQ==
