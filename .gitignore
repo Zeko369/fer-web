@@ -2,3 +2,6 @@ node_modules/
 .DS_Store
 
 *.zip
+
+# My fork
+lab3-baseline
