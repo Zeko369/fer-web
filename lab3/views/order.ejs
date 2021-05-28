@@ -1,12 +1,12 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title><%= title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="./images/flower-icon.png"/>
-    <link rel="stylesheet" type="text/css" href="./vendor/normalize.css">
-    <link rel="stylesheet" type="text/css" href="./styles/main.css">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link rel="shortcut icon" type="image/png" href="/images/flower-icon.png" />
+    <link rel="stylesheet" type="text/css" href="/vendor/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 </head>
 
 <body class="content">
@@ -15,17 +15,30 @@
 
 <main class="main">
 
-    <!-- INSERT CODE HERE -->
-    
-    <!-- <div class="gallery">
-            <div class="photo-box" data-id=" ... ">
-                <img class="photo-box-image" src=" ... "></img>
-                <div class="photo-box-title font-secondary main-color-emphasized">
-                    <a class="link" href=" ... "> ... </a>
-                </div>
+    <% for(const category of categories) { %>
+        <section class="section secondary-color-bg">
+            <div class="centered-container">
+                <h1 class="decorated-title font-secondary main-color">
+                    <span class="main-color-emphasized"><%= category['name'] %></span>
+                    Inventory
+                </h1>
+                <div class="separator"></div>
             </div>
-    </div> -->
-
+            <div class="gallery">
+                <% for(const item of category['items']) { %>
+                    <div class="photo-box" data-id="<%= item['id'] %>">
+                        <img alt="<%= item['name'] %>" class="photo-box-image" src="<%= item['imageurl'] %>')" />
+                        <div class="photo-box-title font-secondary main-color-emphasized"></div>
+                        <div class="photo-box-title font-secondary main-color-emphasized">
+                            <a class="link" href="/item/<%= item['id'] %>">
+                                <%= item['name'] %>
+                            </a>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </section>
+    <% } %>
 </main>
 
 <%- include(`partials/footer`); %>

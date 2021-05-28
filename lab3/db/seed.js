@@ -1,12 +1,4 @@
-const { Pool } = require("pg");
-
-const pool = new Pool({
-  user: "dev",
-  host: "localhost",
-  database: "web1-lab3",
-  password: "foobar123",
-  port: 5432
-});
+import * as db from "./index.js";
 
 const sql_create_inventory = `DROP TABLE IF EXISTS inventory;
 CREATE TABLE inventory (
@@ -51,15 +43,15 @@ const sql_insert_category = `INSERT INTO categories (name, description, seasonal
 `;
 
 (async () => {
-  await pool.query(sql_create_inventory);
+  await db.query(sql_create_inventory);
   console.log("Successful creation of the 'inventory' table");
-  await pool.query(sql_insert_inventory);
+  await db.query(sql_insert_inventory);
   console.log("Successful seeded the 'inventory' table");
 
-  await pool.query(sql_create_categories);
+  await db.query(sql_create_categories);
   console.log("Successful creation of the 'inventory' table");
-  await pool.query(sql_insert_category);
+  await db.query(sql_insert_category);
   console.log("Successful seeded the 'inventory' table");
 
-  await pool.end();
+  await db.disconnect();
 })();
