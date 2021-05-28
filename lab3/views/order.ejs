@@ -24,6 +24,15 @@
                 </h1>
                 <div class="separator"></div>
             </div>
+
+            <% if (category['items'].length === 0) { %>
+                <div class="centered-container">
+                    <h2 class="font-secondary main-color">
+                        No items in this category
+                    </h2>
+                </div>
+            <% } %>
+
             <div class="gallery">
                 <% for(const item of category['items']) { %>
                     <div class="photo-box" data-id="<%= item['id'] %>">

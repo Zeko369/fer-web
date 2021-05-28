@@ -15,8 +15,8 @@ orderRouter.get("/", async (req, res) => {
             c.name      as c_name,
             description as c_description,
             seasonal    as c_seasonal
-         FROM inventory i
-            JOIN categories c on i.categoryid = c.id
+         FROM categories c
+            LEFT JOIN inventory i on i.categoryid = c.id
     `
   );
 

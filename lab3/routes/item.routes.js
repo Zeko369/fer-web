@@ -26,8 +26,8 @@ itemRouter.get("/:id", async (req, res) => {
               JOIN categories c ON i.categoryid = c.id
               LEFT JOIN suppliers s ON s.supplierfor = i.id
      WHERE i.id = $1
-     ORDER BY s.id DESC
-     `,
+     ORDER BY s.id
+    `,
     [req.params["id"]]
   );
 
@@ -122,9 +122,12 @@ itemRouter.post("/:id/editsupplier/:supplier_id", validateUpdateSupplier, async 
   }
 
   /** @type {import("pg").QueryArrayResult<Record<string, any>>} */
-  const raw = await query(`SELECT s.* FROM suppliers s WHERE s.id = $1 `, [
-    req.params["supplier_id"]
-  ]);
+  const raw = await query(
+    `SELECT s.*
+     FROM suppliers s
+     WHERE s.id = $1 `,
+    [req.params["supplier_id"]]
+  );
 
   const supplier = raw.rows[0];
   if (raw.rowCount === 0 || !supplier) {
@@ -134,13 +137,13 @@ itemRouter.post("/:id/editsupplier/:supplier_id", validateUpdateSupplier, async 
   try {
     await query(
       `UPDATE suppliers
-SET name = $1,
-    country = $2,
-    county = $3,
-    email = $4,
-    suppliersince = $5
-WHERE id = $6
-`,
+       SET name          = $1,
+           country       = $2,
+           county        = $3,
+           email         = $4,
+           suppliersince = $5
+       WHERE id = $6
+      `,
       [
         req.body["name"],
         req.body["country"],
