@@ -42,6 +42,49 @@ const sql_insert_category = `INSERT INTO categories (name, description, seasonal
     ('Fertilizers', 'Essential nutrients', 'No');
 `;
 
+const sql_create_experts = `DROP TABLE IF EXISTS experts;
+    CREATE TABLE experts (
+    id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name text NOT NULL,
+    surname text NOT NULL,
+    email text NOT NULL,
+    employedsince numeric NOT NULL,
+    expertsince numeric NOT NULL,
+    expertFor int NOT NULL
+)`;
+
+const sql_insert_experts = `INSERT INTO experts (name, surname, email, employedsince, expertsince, expertFor) VALUES 
+    ('Filip', 'Tulipovski', 'filip.tulipovski@flowershop.fer.hr', 2012, 2015, 1),
+    ('Ružica', 'Ružić', 'ruzica.ruzic@flowershop.fer.hr', 2002, 1999, 3),
+    ('Ivančica', 'Cvjetić', 'ivancica.cvjetic@flowershop.fer.hr', 2009, 2010, 2),
+    ('Sunčica', 'Horvat', 'suncica.horvat@flowershop.fer.hr', 2011, 2005, 5),
+    ('Hrvoje', 'Hortenzijo', 'hrvoje.hortenzijo@flowershop.fer.hr', 1995, 1990, 7),
+    ('Jagoda', 'Jagodić', 'jagoda.jagodic@flowershop.fer.hr', 2019, 2020, 8),
+    ('Iris', 'Leptirić', 'iris.leptiric1989@flowershop.fer.hr', 2000, 2001, 2),
+    ('Narcisa', 'Spring', 'narcisa.spring@flowershop.fer.hr', 1998, 2005, 5),
+    ('Lily Rose', 'Žutić Zayan', 'lily-rose.zutic-zayan22@flower.shop.hr', 1997, 2005, 1);
+`;
+
+const sql_create_suppliers = `DROP TABLE IF EXISTS suppliers;
+    CREATE TABLE suppliers (
+    id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name text NOT NULL,
+    country text NOT NULL,
+    county text NOT NULL,
+    email text NOT NULL,
+    supplierSince numeric NOT NULL,
+    supplierFor int NOT NULL
+)`;
+
+const sql_insert_suppliers = `INSERT INTO suppliers (name, country, county, email, supplierSince, supplierFor) VALUES 
+    ('Štihača d.o.o.', 'Croatia', 'Zagreb', 'stihaca@stihanje.hr', 2002, 7),
+    ('Trn u oku, j.d.o.o', 'Croatia', 'Istria', 'trn@oko.hr', 2010, 1),
+    ('Vesele vile, d.d.', 'Croatia', 'Karlovac', 'vesele@vile.hr', 2019, 10),
+    ('Šareni vrt, d.o.o.', 'Croatia', 'Split-Dalmatia', 'sareni.vrt@boje.hr', 2011, 5),
+    ('Cvjetić, j.d.o.o.', 'Croatia', 'Osijek-Baranja', 'cvjetic@cvjetic.hr', 2012, 7),
+    ('Slatka Marelica, d.d.', 'Croatia', 'Varaždin', 'slatka@marelica.hr', 2020, 8);
+`;
+
 (async () => {
   await db.query(sql_create_inventory);
   console.log("Successful creation of the 'inventory' table");
@@ -52,6 +95,16 @@ const sql_insert_category = `INSERT INTO categories (name, description, seasonal
   console.log("Successful creation of the 'inventory' table");
   await db.query(sql_insert_category);
   console.log("Successful seeded the 'inventory' table");
+
+  await db.query(sql_create_suppliers);
+  console.log("Successful creation of the 'suppliers' table");
+  await db.query(sql_insert_suppliers);
+  console.log("Successful seeded the 'suppliers' table");
+
+  await db.query(sql_create_experts);
+  console.log("Successful creation of the 'experts' table");
+  await db.query(sql_insert_experts);
+  console.log("Successful seeded the 'experts' table");
 
   await db.disconnect();
 })();

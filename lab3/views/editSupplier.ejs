@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="/images/flower-icon.png" />
+    <link rel="stylesheet" type="text/css" href="/vendor/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+
+<body class="content">
+
+<%- include(`partials/header`); %>
+
+<main class="main">
+    <section class="section secondary-color-bg">
+        <div class="centered-container">
+            <h1 class="decorated-title font-secondary main-color">
+                Edit
+                <span class="main-color-emphasized">Supplier</span>
+                for item
+                <span class="main-color-emphasized"><%= supplier['item_name'] %></span>
+            </h1>
+            <div class="separator"></div>
+        </div>
+        <div class="container">
+            <form action="/item/<%= supplier['supplierfor'] %>/editsupplier/<%= supplier['id'] %>" method="post"
+                  id="supplier-form">
+                <fieldset class="fieldset">
+                    <div class="label-input">
+                        <label for="name">Name: </label>
+                        <input type="text" name="name" id="name" value="<%= supplier['name'] %>" required>
+                    </div>
+                    <div class="label-input">
+                        <label for="country">Country: </label>
+                        <input type="text" name="country" id="country" value="<%= supplier['country'] %>" required>
+                    </div>
+                    <div class="label-input">
+                        <label for="county">County: </label>
+                        <input type="text" name="county" id="county" value="<%= supplier['county'] %>" required>
+                    </div>
+                    <div class="label-input">
+                        <label for="email">E-mail: </label>
+                        <input type="email" name="email" id="email" value="<%= supplier['email'] %>" required>
+                    </div>
+                    <div class="label-input">
+                        <label for="suppliersince">Supplier since: </label>
+                        <input type="number" name="suppliersince" id="suppliersince"
+                               value="<%= supplier['suppliersince'] %>" required>
+                    </div>
+                    <hr>
+
+                    <div class="submitButtons">
+                        <input type="submit" class="btn" value="Submit">
+                        <input type="button" class="btn" onclick="resetForm()" value="Reset">
+                    </div>
+                </fieldset>
+            </form>
+
+            <script>
+              const data = JSON.parse(`<%- JSON.stringify(supplier) %>`);
+              const resetForm = () => {
+                document.querySelectorAll("#supplier-form > fieldset > .label-input > input").forEach(input => {
+                  input.value = data[input.name];
+                });
+              };
+            </script>
+        </div>
+    </section>
+</main>
+
+<%- include(`partials/footer`); %>
+
+</body>
+
+</html>

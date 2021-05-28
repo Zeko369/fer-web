@@ -4,8 +4,11 @@ import express from "express";
 import { homeRouter } from "./routes/home.routes.js";
 import { orderRouter } from "./routes/order.routes.js";
 import { itemRouter } from "./routes/item.routes.js";
+import bodyParser from "body-parser";
 
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set("views", join(dirname("."), "views"));
 app.set("view engine", "ejs");
