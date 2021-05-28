@@ -8,6 +8,8 @@ const pool = new pg.Pool({
   port: 5432
 });
 
+const log = false;
+
 /**
  * @function
  * @template A
@@ -19,7 +21,10 @@ export const query = (text, params = undefined) => {
   const start = Date.now();
   return pool.query(text, params).then((res) => {
     const duration = Date.now() - start;
-    console.log("executed query", { text, params, duration, rows: res.rows });
+    if (log) {
+      console.log("executed query", { text, params, duration, rows: res.rows });
+    }
+
     return res;
   });
 };

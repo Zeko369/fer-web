@@ -27,6 +27,7 @@ itemRouter.get("/:id", async (req, res) => {
   }
 
   const item = itemRes.rows[0];
+  console.log(item);
 
   res.render("item", {
     title: item["title"],
