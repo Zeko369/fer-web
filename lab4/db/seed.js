@@ -1,12 +1,4 @@
-const { Pool } = require("pg");
-
-const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "web-lab4",
-  password: "bazepodataka",
-  port: 5432
-});
+const { pool } = require("./index");
 
 const sql_create_categories = `CREATE TABLE categories (
     id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -165,7 +157,6 @@ let indexes = [
 
 if (tables.length != table_data.length || tables.length != table_names.length) {
   console.log("tables, names and data arrays length mismatch.");
-  return;
 }
 
 //create tables and populate with data (if provided)
@@ -201,4 +192,6 @@ if (tables.length != table_data.length || tables.length != table_names.length) {
       console.log("Error creating index " + i + ".");
     }
   }
+
+  await pool.end();
 })();

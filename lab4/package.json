@@ -1,7 +1,7 @@
 {
-  "name": "wim-lab-3",
+  "name": "wim-lab-4",
   "version": "1.0.0",
-  "description": "WiM: Laboratory exercise 3",
+  "description": "WiM: Laboratory exercise 4",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",

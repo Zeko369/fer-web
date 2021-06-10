@@ -5,7 +5,7 @@ const path = require("path");
 const pg = require("pg");
 const db = require("./db");
 const session = require("express-session");
-const pgSession = require("connect-pg-simple")(session);
+const PgSession = require("connect-pg-simple")(session);
 
 //uvoz modula s definiranom funkcionalnosti ruta
 const homeRouter = require("./routes/home.routes");
@@ -30,9 +30,14 @@ app.use(express.urlencoded({ extended: true }));
 //####################### ZADATAK #######################
 
 //pohrana sjednica u postgres bazu korštenjem connect-pg-simple modula
-//app.use(
-
-//)
+app.use(
+  session({
+    secret: "fer web",
+    resave: false,
+    store: new PgSession(),
+    saveUninitialized: true
+  })
+);
 
 //#######################################################
 
@@ -47,4 +52,6 @@ app.use("/user", userRoute);
 app.use("/checkout", checkoutRoute);
 
 //pokretanje poslužitelja na portu 3000
-app.listen(3000);
+app.listen(3000, () => {
+  console.log("Up on http://localhost:3000/");
+});

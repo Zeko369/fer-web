@@ -93,7 +93,7 @@ module.exports = class User {
 };
 
 //dohvat korisnika iz baze podataka na osnovu korisničkog imena (stupac user_name)
-dbGetUserByName = async (user_name) => {
+const dbGetUserByName = async (user_name) => {
   const sql =
     `SELECT id, user_name, first_name, last_name, email, password, role
     FROM users WHERE user_name = '` +
@@ -109,7 +109,7 @@ dbGetUserByName = async (user_name) => {
 };
 
 //dohvat korisnika iz baze podataka na osnovu email adrese (stupac email)
-dbGetUserByEmail = async (user_email) => {
+const dbGetUserByEmail = async (user_email) => {
   const sql =
     `SELECT id, user_name, first_name, last_name, email, password, role
     FROM users WHERE email = '` +
@@ -125,7 +125,7 @@ dbGetUserByEmail = async (user_email) => {
 };
 
 //dohvat korisnika iz baze podataka na osnovu id korisnika (stupac id)
-dbGetUserById = async (user_id) => {
+const dbGetUserById = async (user_id) => {
   const sql =
     `SELECT id, user_name, first_name, last_name, email, password, role
     FROM users WHERE id = ` + user_id;
@@ -139,7 +139,7 @@ dbGetUserById = async (user_id) => {
 };
 
 //umetanje zapisa o korisniku u bazu podataka
-dbNewUser = async (user) => {
+const dbNewUser = async (user) => {
   const sql =
     "INSERT INTO users (user_name, first_name, last_name, email, password, role) VALUES ('" +
     user.user_name +

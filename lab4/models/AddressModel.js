@@ -52,7 +52,7 @@ module.exports = class Address {
 };
 
 //dohvat adresa iz baze podataka, vezanih uz id korisnika (id iz tablice users)
-dbGetAddressByUserId = async (user_id) => {
+const dbGetAddressByUserId = async (user_id) => {
   const sql =
     `SELECT id, user_id, name, street, code, town, country
     FROM address WHERE user_id = ` + user_id;
@@ -66,7 +66,7 @@ dbGetAddressByUserId = async (user_id) => {
 };
 
 //umetanje zapisa o adresi u bazu podataka
-dbNewAddress = async (addr) => {
+const dbNewAddress = async (addr) => {
   const sql =
     "INSERT INTO address (user_id, name, street, code, town, country) VALUES ('" +
     addr.user_id +

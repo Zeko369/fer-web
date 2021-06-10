@@ -46,7 +46,7 @@ module.exports = class Order {
 };
 
 //dohvat narudžbi iz baze podataka, vezanih uz id korisnika (id iz tablice users)
-dbGetOrdersByUserId = async (user_id) => {
+const dbGetOrdersByUserId = async (user_id) => {
   const sql =
     `SELECT id, order_date, user_id, address, cart
     FROM orders WHERE user_id = ` + user_id;
@@ -60,7 +60,7 @@ dbGetOrdersByUserId = async (user_id) => {
 };
 
 //umetanje zapisa o narudžbi u bazu podataka
-dbNewOrder = async (order) => {
+const dbNewOrder = async (order) => {
   const sql =
     "INSERT INTO orders (order_date, user_id, address, cart) VALUES (current_timestamp, '" +
     order.user_id +

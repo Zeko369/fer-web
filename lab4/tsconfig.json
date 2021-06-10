@@ -7,6 +7,6 @@
 
     "noImplicitAny": false
   },
-  "include": ["./routes", "./db/"],
+  "include": ["./routes", "./db", "./models"],
   "exclude": ["node_modules"]
 }
