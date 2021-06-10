@@ -77,6 +77,9 @@ router.post("/", function (req, res, next) {
     // - napraviti redirect na home stranicu
 
     //#######################################################
+
+    req.session.user = user;
+    res.redirect("/");
   })();
 });
 

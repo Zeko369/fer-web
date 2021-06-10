@@ -1,11 +1,12 @@
 //uvoz modula
+const { join } = require("path");
 const express = require("express");
-const app = express();
-const path = require("path");
-const pg = require("pg");
-const db = require("./db");
+
 const session = require("express-session");
 const PgSession = require("connect-pg-simple")(session);
+const { pool } = require("./db");
+
+const app = express();
 
 //uvoz modula s definiranom funkcionalnosti ruta
 const homeRouter = require("./routes/home.routes");
@@ -16,13 +17,14 @@ const signupRoute = require("./routes/signup.routes");
 const cartRoute = require("./routes/cart.routes");
 const userRoute = require("./routes/user.routes");
 const checkoutRoute = require("./routes/checkout.routes");
+const User = require("./models/UserModel");
 
 //middleware - predlošci (ejs)
-app.set("views", path.join(__dirname, "views"));
+app.set("views", join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 //middleware - statički resursi
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(join(__dirname, "public")));
 
 //middleware - dekodiranje parametara
 app.use(express.urlencoded({ extended: true }));
@@ -32,10 +34,11 @@ app.use(express.urlencoded({ extended: true }));
 //pohrana sjednica u postgres bazu korštenjem connect-pg-simple modula
 app.use(
   session({
-    secret: "fer web",
+    store: new PgSession({ pool }),
+    secret: "pero123",
     resave: false,
-    store: new PgSession(),
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }
   })
 );
 
